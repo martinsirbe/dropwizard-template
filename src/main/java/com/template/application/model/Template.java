@@ -1,7 +1,5 @@
 package com.template.application.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class Template {
 
     private String hello;
