@@ -14,11 +14,47 @@ This is a [Dropwizard] template that has a single resource `TemplateResource` th
 
 ### Packages
 * configuration - currently configures `ObjectMapper` that can be used to parse `String` to a POJO.
-* factories - contains factory for resources.
+* factories - contains a factory for resources.
 * model - used for parsing a POJO to a JSON object for the template response.
-* resources - template resource that has a single HTTP GET method and produces a JSON object.
+* resources - template resource that has HTTP GET and POST methods and produces a JSON object.
+
+### Example calls
+##### GET
+`/template` response:
+```json
+{
+    "hello" : "world"
+}
+```
+
+`/template?name={name}` response:
+```json
+{
+    "hello" : "{name}"
+}
+```
+##### POST
+`/template` request with:
+```json
+{
+    "hello" : "{name}"
+}
+```
+produces response:
+```json
+{
+    "hello" : "{name}"
+}
+```
+`/template` request with an empty body produces response:
+```json
+{
+    "hello" : "world"
+}
+```
 
 ### What is used?
-In this Dropwizard template I have used Dropwizard framework version 0.9.2 and Apache Maven for the project management.
+In this Dropwizard template, I have used Dropwizard framework version 0.9.2 and [Apache Maven] for the project management.
 
 [Dropwizard]: <http://www.dropwizard.io/0.9.2/docs/>
+[Apache Maven]: <https://maven.apache.org/>
