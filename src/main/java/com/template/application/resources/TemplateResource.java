@@ -33,7 +33,7 @@ public class TemplateResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getMethod(String input, @Context ObjectMapper objectMapper) throws IOException {
+    public Response postMethod(String input, @Context ObjectMapper objectMapper) throws IOException {
         Template template = objectMapper.readValue(input, Template.class);
 
         Template templateResponse;
