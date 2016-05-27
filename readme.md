@@ -18,6 +18,19 @@ This is a [Dropwizard] template that has a single resource `TemplateResource` th
 * model - used for parsing a POJO to a JSON object for the template response.
 * resources - template resource that has HTTP GET and POST methods and produces a JSON object.
 
+### Running the app with [IntelliJ IDEA]
+1.) `Run` -> `Edit Configurations...`
+![alt tag](http://martins.irbe.co.uk/tuts/config_dropwizard_app/run-edit_configurations.jpg)
+
+2.) Add Application configuration by clicking on `+` -> `Application`
+![alt tag](http://martins.irbe.co.uk/tuts/config_dropwizard_app/+_application.jpg)
+
+3.) Name your template application, select main class, add Program arguments (a path to yaml file)
+![alt tag](http://martins.irbe.co.uk/tuts/config_dropwizard_app/application_configuration.jpg)
+
+4.) Run the application
+![alt tag](http://martins.irbe.co.uk/tuts/config_dropwizard_app/run_application.jpg)
+
 ### Example calls
 ##### GET
 `/template` response:
@@ -54,7 +67,8 @@ produces response:
 ```
 
 ### What is used?
-In this Dropwizard template, I have used Dropwizard framework version 0.9.2 and [Apache Maven] for the project management.
+In this Dropwizard template, I have used [Dropwizard] framework version 0.9.2 and [Apache Maven] for the project management.
 
 [Dropwizard]: <http://www.dropwizard.io/0.9.2/docs/>
 [Apache Maven]: <https://maven.apache.org/>
+[IntelliJ IDEA]: <https://www.jetbrains.com/idea/>
