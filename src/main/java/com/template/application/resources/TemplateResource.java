@@ -4,8 +4,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.template.application.model.Template;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -42,6 +44,16 @@ public class TemplateResource {
         } else {
             templateResponse = new Template("world");
         }
-        return Response.ok(templateResponse).build();
+        return Response.status(201).entity(templateResponse).build();
+    }
+
+    @PUT
+    public Response putMethod() {
+        return Response.status(501).build();
+    }
+
+    @DELETE
+    public Response deleteMethod() {
+        return Response.status(501).build();
     }
 }

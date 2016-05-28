@@ -24,6 +24,7 @@ public class TemplateApplication extends Application<TemplateConfiguration> {
             }
         });
 
+        // Register all resources with Jersey
         ResourceFactory resourceFactory = new ResourceFactory();
         environment.jersey().register(resourceFactory.templateResource());
     }
