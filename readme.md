@@ -20,16 +20,13 @@ This is a [Dropwizard] template that has a single resource `TemplateResource` th
 
 ### Running the app with [IntelliJ IDEA]
 1.) `Run` -> `Edit Configurations...`
-![alt tag](http://martins.irbe.co.uk/tuts/config_dropwizard_app/run-edit_configurations.jpg)
 
 2.) Add Application configuration by clicking on `+` -> `Application`
-![alt tag](http://martins.irbe.co.uk/tuts/config_dropwizard_app/+_application.jpg)
 
-3.) Name your template application, select main class, add Program arguments (a path to yaml file)
-![alt tag](http://martins.irbe.co.uk/tuts/config_dropwizard_app/application_configuration.jpg)
+3.) Name your template application. Select main class.
+Add Program arguments (`server ../dropwizard_template/src/main/resources/templateConfiguration.yaml`)
 
 4.) Run the application
-![alt tag](http://martins.irbe.co.uk/tuts/config_dropwizard_app/run_application.jpg)
 
 ### Example calls
 ##### GET
