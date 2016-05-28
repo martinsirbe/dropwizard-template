@@ -2,7 +2,7 @@ server:
   applicationConnectors:
     - type: http
       port: 9000
-  adminConnectors:
+  adminConnectors: # If not specified would be set to a default admin port 8081
     - type: http
       port: 9001
 logging:
