@@ -19,15 +19,17 @@ import java.io.IOException;
 @Path("/template")
 public class TemplateResource {
 
+    private static final String DEFAULT_VALUE = "world";
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getMethod(@QueryParam("name") String name) {
         Template templateResponse;
 
-        if (name == null) {
-            templateResponse = new Template("world");
-        } else {
+        if (name != null) {
             templateResponse = new Template(name);
+        } else {
+            templateResponse = new Template(DEFAULT_VALUE);
         }
         return Response.ok(templateResponse).build();
     }
@@ -35,25 +37,28 @@ public class TemplateResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response postMethod(String input, @Context ObjectMapper objectMapper) throws IOException {
+    public Response postMethod(
+            String input,
+            @Context ObjectMapper objectMapper
+    ) throws IOException {
         Template template = objectMapper.readValue(input, Template.class);
 
         Template templateResponse;
         if (template != null && template.getHello() != null) {
             templateResponse = new Template(template.getHello());
         } else {
-            templateResponse = new Template("world");
+            templateResponse = new Template(DEFAULT_VALUE);
         }
-        return Response.status(201).entity(templateResponse).build();
+        return Response.status(Response.Status.CREATED).entity(templateResponse).build();
     }
 
     @PUT
     public Response putMethod() {
-        return Response.status(501).build();
+        return Response.status(Response.Status.NOT_IMPLEMENTED).build();
     }
 
     @DELETE
     public Response deleteMethod() {
-        return Response.status(501).build();
+        return Response.status(Response.Status.NOT_IMPLEMENTED).build();
     }
 }

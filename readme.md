@@ -62,6 +62,17 @@ produces response:
     "hello" : "world"
 }
 ```
+`curl "http://localhost:9001/healthcheck"` accessing health check on admin port
+```json
+{
+	"deadlocks": {
+		"healthy": true
+	},
+	"template_healthcheck": {
+		"healthy": true
+	}
+}
+```
 
 ### What is used?
 In this Dropwizard template, I have used [Dropwizard] framework version 0.9.2 and [Apache Maven] for the project management.
