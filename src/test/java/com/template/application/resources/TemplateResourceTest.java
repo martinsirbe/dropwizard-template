@@ -2,7 +2,7 @@ package com.template.application.resources;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.template.application.model.Template;
+import com.template.application.model.TemplateOne;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,7 +32,7 @@ public class TemplateResourceTest {
         assertThat(response.getStatus(), is(200));
         assertNotNull(response.getEntity());
 
-        Template entity = (Template)response.getEntity();
+        TemplateOne entity = (TemplateOne)response.getEntity();
         assertThat(entity.getHello(), is("world"));
     }
 
@@ -42,27 +42,27 @@ public class TemplateResourceTest {
         assertThat(response.getStatus(), is(200));
         assertNotNull(response.getEntity());
 
-        Template entity = (Template)response.getEntity();
+        TemplateOne entity = (TemplateOne)response.getEntity();
         assertThat(entity.getHello(), is("friend"));
     }
 
     @Test
     public void responseIsHelloFriendWhenPostingHelloFriendJson() throws IOException {
-        Response response = resource.postMethod("{\"hello\":\"friend\"}", objectMapper);
+        Response response = resource.postMethodOne("{\"hello\":\"friend\"}", objectMapper);
         assertThat(response.getStatus(), is(201));
         assertNotNull(response.getEntity());
 
-        Template entity = (Template)response.getEntity();
+        TemplateOne entity = (TemplateOne)response.getEntity();
         assertThat(entity.getHello(), is("friend"));
     }
 
     @Test
     public void responseIsHelloWorldWhenPostingWithoutJson() throws IOException {
-        Response response = resource.postMethod("{}", objectMapper);
+        Response response = resource.postMethodOne("{}", objectMapper);
         assertThat(response.getStatus(), is(201));
         assertNotNull(response.getEntity());
 
-        Template entity = (Template)response.getEntity();
+        TemplateOne entity = (TemplateOne)response.getEntity();
         assertThat(entity.getHello(), is("world"));
     }
 

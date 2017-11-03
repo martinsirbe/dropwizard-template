@@ -1,7 +1,11 @@
 package com.template.application.resources;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.template.application.model.Template;
+import com.template.application.model.TemplateOne;
+import com.template.application.model.TemplateThree;
+import com.template.application.model.TemplateThreeOne;
+import com.template.application.model.TemplateThreeTwo;
+import com.template.application.model.TemplateTwo;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -24,30 +28,66 @@ public class TemplateResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getMethod(@QueryParam("name") String name) {
-        Template templateResponse;
+        TemplateOne templateResponse;
 
         if (name != null) {
-            templateResponse = new Template(name);
+            templateResponse = new TemplateOne(name);
         } else {
-            templateResponse = new Template(DEFAULT_VALUE);
+            templateResponse = new TemplateOne(DEFAULT_VALUE);
         }
         return Response.ok(templateResponse).build();
     }
 
     @POST
+    @Path("template/1")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response postMethod(
+    public Response postMethodOne(
             String input,
             @Context ObjectMapper objectMapper
     ) throws IOException {
-        Template template = objectMapper.readValue(input, Template.class);
+        TemplateOne template = objectMapper.readValue(input, TemplateOne.class);
 
-        Template templateResponse;
+        TemplateOne templateResponse;
         if (template != null && template.getHello() != null) {
-            templateResponse = new Template(template.getHello());
+            templateResponse = new TemplateOne(template.getHello());
         } else {
-            templateResponse = new Template(DEFAULT_VALUE);
+            templateResponse = new TemplateOne(DEFAULT_VALUE);
+        }
+        return Response.status(Response.Status.CREATED).entity(templateResponse).build();
+    }
+
+    @POST
+    @Path("template/2")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response postMethodTwo(
+            TemplateTwo template,
+            @Context ObjectMapper objectMapper
+    ) throws IOException {
+        TemplateTwo templateResponse;
+        if (template != null && template.getHello() != null) {
+            templateResponse = new TemplateTwo(template.getHello());
+        } else {
+            templateResponse = new TemplateTwo(DEFAULT_VALUE);
+        }
+        return Response.status(Response.Status.CREATED).entity(templateResponse).build();
+    }
+
+    @POST
+    @Path("template/3")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response postMethodThree(
+            TemplateThree template,
+            @Context ObjectMapper objectMapper
+    ) throws IOException {
+        TemplateThree templateResponse;
+
+        if (template != null && template.getHello() != null) {
+            templateResponse = new TemplateThree(template.getHello() + " " + template.toString());
+        } else {
+            templateResponse = new TemplateThree(DEFAULT_VALUE);
         }
         return Response.status(Response.Status.CREATED).entity(templateResponse).build();
     }

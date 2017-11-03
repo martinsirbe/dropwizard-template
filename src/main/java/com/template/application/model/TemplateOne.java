@@ -1,14 +1,14 @@
 package com.template.application.model;
 
-public class Template {
+public class TemplateOne {
 
     private String hello;
 
-    public Template(String name) {
+    public TemplateOne(String name) {
         this.hello = name;
     }
 
-    public Template() {
+    public TemplateOne() {
         // An empty constructor is necessary for Jackson to parse input String to a POJO.
     }
 
@@ -18,5 +18,10 @@ public class Template {
 
     public void setHello(String hello) {
         this.hello = hello;
+    }
+
+    @Override
+    public String toString() {
+        return "TemplateOne";
     }
 }
